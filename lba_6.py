@@ -20,8 +20,8 @@ A = np.zeros((N,N),dtype=int)
 F = np.zeros((N, N), dtype=int)
 for i in range (N):
         for j in range(N):
-            #A[i][j]=np.random.randint(-10,10)
-            A[i][j] = i*10+j
+            A[i][j]=np.random.randint(-10,10)
+            #A[i][j] = i*10+j
 middle = time.time()
 print("A time = ", middle - start,"\nmatrix A: \n",A)
 for i in range (N):
