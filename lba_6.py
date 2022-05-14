@@ -79,21 +79,25 @@ for i in A:  # делаем перебор всех строк матрицы
         print()
 #######################################
 from matplotlib import pyplot as plt
-plt.title("Plot")
+import matplotlib.cm as cm
+import seaborn as sns
+import pandas as pd
+
+plt.title("Plot")    # 1 пример matplotlib
 plt.xlabel("Numbers")
 plt.ylabel("volumes")
 for j in range (N):
     plt.plot([i for i in range(N)], A[j][::], marker='x')
 plt.show()
 #######################################
-plt.title("Scatter")
+plt.title("Scatter")    # 2 пример matplotlib
 plt.xlabel("Numbers")
 plt.ylabel("volumes")
 for j in range (N):
     plt.scatter([i for i in range(N)] , A[j][::])
 plt.show()
 #######################################
-plt.title("Bar")
+plt.title("Bar")    # 3 пример matplotlib
 plt.xlabel("Numbers")
 plt.ylabel("volumes")
 for i in range (N):
@@ -102,14 +106,14 @@ plt.show()
 #######################################
 print(c) #min element ? if c < 0 => pie can't exist
 if c >= 0:
-       print("min elemet in A, >= 0 ")
+       print("min elemet in A, >= 0 ")    # 4 пример matplotlib
        for i in range (N):
          plt.pie(A[i][::])
 else :
     print("min element in A, <0 , pie can't exist")
 plt.show()
 #######################################
-OX=np.zeros((N),dtype=int)
+OX=np.zeros((N),dtype=int)    # 5 пример matplotlib
 for i in range (N):
     OX[i] = i
 C = plt.contourf(OX,OX,A,8,
@@ -118,6 +122,21 @@ plt.contourf(OX,OX,A,10,cmap=plt.cm.summer)
 plt.clabel(C,inline = 1 , fontsize = 8)
 plt.colorbar()
 plt.show()
-
-
-
+#######################################
+sns.set_theme(style="white")  # 6 пример seaborn
+uniform_data = A
+if N >= 50 or K >= 10:
+    graph = sns.heatmap(A, vmin=-20 * N, vmax=20 * N)
+elif N < 50 or K < 10:
+    graph = sns.heatmap(A, vmin=-50, vmax=50, annot_kws={'size': 7}, annot=True, fmt=".1f")
+plt.show()
+#######################################
+df = pd.DataFrame(A)
+#######################################
+sns.catplot(data=df, kind="violin", color='magenta')  # 7 пример seaborn
+plt.show()
+#######################################
+p = sns.lineplot(data=df)   # 8 пример seaborn
+p.set_xlabel("Номер элемента в столбце", fontsize=15)
+p.set_ylabel("Значение", fontsize=15)
+plt.show()
